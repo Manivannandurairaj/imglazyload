@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
-import { LazyLoadImageDirective } from 'ng-lazyload-image';
+
 @IonicPage()
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html',
-  providers: [LazyLoadImageDirective]
+  templateUrl: 'home.html'
 })
 export class HomePage {
   defaultImage = 'https://www.placecage.com/1000/1000';
