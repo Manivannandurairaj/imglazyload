@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding #container>
+  <div style="height: 100px; overflow-y: scroll;" #container>
+    <img [src]="defaultImage" [lazyLoad]="image" [offset]="offset" [scrollTarget]="container">
+  </div>
+
+</ion-content>
