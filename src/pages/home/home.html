@@ -1,14 +1,76 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+<ion-header no-shadow>
+  <ion-navbar color="app-theme">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title color="app-white">Home</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding #container>
-  <img [defaultImage]="defaultImage" 
-  [lazyLoad]="lazyLoadImage" [offset]="offset" [scrollObservable]="container.ionScroll"
-  />
+<ion-content padding-left padding-right>
+  <!-- Autocmplete serch -->
+  <ion-item>
+    <ion-label floating>Where do you want to go?</ion-label>
+    <ion-input type="search" [(ngModel)]="txtAutoComplete" #autoComplete clearInput></ion-input>
+    <ion-icon item-end class="align-eye" name="search"></ion-icon>
+  </ion-item>
 
+  <ion-item class="loc">
+    <ion-icon name="md-locate" color="primary" item-left></ion-icon>
+    <h2 class="text-overflow">{{currentLocation || 'Location Error'}}</h2>
+    <p>Current location</p>
+  </ion-item>
+
+  <!-- <ion-list padding-top>
+    <ion-card no-margin>
+      <ion-card-content>
+        <ion-row no-padding>
+          <ion-col col-10 no-padding>
+            <button ion-item no-padding class="menu-btn disable-ripple">
+              <ion-icon color="primary" item-start name="md-locate"></ion-icon>
+              <h2>{{currentLocation}}</h2>
+              <h4>Current location</h4>
+            </button>
+          </ion-col>
+          <ion-col col-2 no-padding>
+            <ion-thumbnail item-end>
+              <ion-img [src]="imagePath"></ion-img>
+            </ion-thumbnail>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+    <h1>{{accu}}</h1>
+  </ion-list> -->
+
+  <!-- Recommended Cards -->
+  <h6 class="rec-title">Recommended for you</h6>
+  <ion-slides pager loop="true" autoplay="2000" #homecontainer>
+    <ion-slide *ngFor="let recomSlide of recommendedSlides">
+      <ion-card class="pos">
+        <!-- <img class="card-img" src="assets/imgs/elastic.jpg" /> -->
+        <img class="card-img" [defaultImage]="recomSlide.defaultImage" [lazyLoad]="recomSlide.lazyloadImage" [scrollObservable]="homecontainer.ionSlideWillChange">
+        <div class="card-title">Chennai - VGP</div>
+        <div icon-left clear small class="card-subtitle">
+          <ion-icon class="icon-loc" name="pin"></ion-icon>
+          Maniya
+        </div>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+  <!-- Most Visited -->
+  <h6 class="rec-title">Most visited</h6>
+  <ion-slides pager parallax="true" loop="true" autoplay="2500">
+    <ion-slide *ngFor="let a of [1,2,3,4]">
+      <ion-card class="pos">
+        <img class="card-img" src="assets/imgs/elastic.jpg" />
+        <div class="card-title">Chennai - VGP</div>
+        <div icon-left clear small class="card-subtitle">
+          <ion-icon class="icon-loc" name="pin"></ion-icon>
+          Maniya
+        </div>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
 </ion-content>
