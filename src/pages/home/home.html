@@ -7,8 +7,8 @@
 </ion-header>
 
 <ion-content padding #container>
-  <div style="height: 100px; overflow-y: scroll;" #container>
-    <img [src]="defaultImage" [lazyLoad]="image" [offset]="offset" [scrollTarget]="container">
-  </div>
+  <img [defaultImage]="defaultImage" 
+  [lazyLoad]="lazyLoadImage" [offset]="offset" [scrollObservable]="container.ionSlideWillChange"
+  />
 
 </ion-content>
